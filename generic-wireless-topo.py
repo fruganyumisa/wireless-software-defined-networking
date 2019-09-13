@@ -1,5 +1,6 @@
 ##!/usr/bin/python
 
+import time
 from mininet.node import Controller
 from mininet.log import setLogLevel, info
 from mn_wifi.net import Mininet_wifi
@@ -27,9 +28,14 @@ def topology():
     position = '50,40,0')
     cl = net.addController('cl', controller=Controller)
 
+    #Takes 5 minutes before to proceed
+    #time.sleep(40)
+
+
 
     info("*** Configuring wifi nodes\n")
     net.configureWifiNodes()
+    time.sleep(90)
 
     net.plotGraph(max_x=60, max_y=60)
 
