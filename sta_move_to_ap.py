@@ -43,8 +43,8 @@ def topology():
     net.plotGraph(max_x = 250, max_y = 250)
 
     #net.controllAssociation
-    net.startMobility(time = 0, AC = 'ssf')
-    net.mobility(sta1, 'start', time = 0, position = '1,50,0')
+    net.startMobility(time = 40, AC = 'ssf')
+    net.mobility(sta1, 'start', time = 40, position = '1,50,0')
     net.mobility(sta1, 'stop', time = 79, position = '159,50,0')
     net.stopMobility(time = 80)
 
