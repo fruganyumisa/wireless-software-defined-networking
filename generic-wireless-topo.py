@@ -15,7 +15,7 @@ def topology():
 
     info("*** Creating nodes\n")
     ap1 = net.addAccessPoint('ap1', ssid= 'iGrid-ap1', mode = 'g', channel = '1',
-    position = '10,30,0', range = '30')
+    position = '10,30,0', range = '20')
     ap2 = net.addAccessPoint('ap2', ssid= 'iGrid-ap2', mode = 'g', channel = '6',
     position = '40,30,0', range = '20')
     sta1 = net.addStation('sta1', mac = '00:00:00:00:00:01', ip = '10.0.0.1/8',
@@ -60,6 +60,7 @@ def topology():
 
     info("*** Running CLI\n")
     CLI_wifi(net)
+    
 
 
     info("*** Stopping the network \n")
