@@ -6,13 +6,15 @@ from mininet.log import setLogLevel, info
 from mn_wifi.net import Mininet_wifi
 from mn_wifi.node import OVSKernelAP
 from mn_wifi.cli import CLI_wifi
+from mn_wifi.devices import GetTxPower
+from mn_wifi.link import wmediumd
 from mn_wifi.propagationModels import propagationModel
 
 
 def topology():
 
     print("Welcome to mininet-Wifi")
-    net = Mininet_wifi(controller = Controller, accessPoint =OVSKernelAP,allAutoAssociation=True,fading_coefficient=3)
+    net = Mininet_wifi(controller = Controller, link=wmediumd, accessPoint =OVSKernelAP,allAutoAssociation=True,fading_coefficient=3)
 
     info("*** Creating nodes\n")
     ap1 = net.addAccessPoint('ap1', ssid= 'iGrid-ap1', mode = 'g', channel = '1',
@@ -48,7 +50,7 @@ def topology():
     net.auto_association()
 
 
-    info("*** Creating links and associations")
+    info("*** Creating links and associations\n")
     net.addLink(ap1, ap2)
     #net.addLink(ap1, sta1)
     #net.addLink(ap2, sta2)
