@@ -1,4 +1,4 @@
-##!/usr/bin/python
+#!/usr/bin/python
 
 import time
 from mininet.node import Controller
@@ -8,18 +8,19 @@ from mn_wifi.node import OVSKernelAP
 from mn_wifi.cli import CLI_wifi
 from mn_wifi.devices import GetTxPower
 from mn_wifi.link import wmediumd
+from mn_wifi.wmediumdConnector import interference
 from mn_wifi.propagationModels import propagationModel
 
 
 def topology():
 
     print("Welcome to mininet-Wifi")
-    net = Mininet_wifi(controller = Controller, link=wmediumd, accessPoint =OVSKernelAP,allAutoAssociation=True,fading_coefficient=3)
+    net = Mininet_wifi(controller = Controller, link=wmediumd, accessPoint =OVSKernelAP, noise_threshold=-91, fading_coefficient=3)
 
     info("*** Creating nodes\n")
-    ap1 = net.addAccessPoint('ap1', ssid= 'iGrid-ap1', mode = 'g', channel = '1',
+    ap1 = net.addAccessPoint('ap1', ssid= 'iGrid-ap1', mode = 'g', channel = '6',
     model='DI524', position = '10,30,0', range = '20')
-    ap2 = net.addAccessPoint('ap2', ssid= 'iGrid-ap2', mode = 'g', channel = '6',
+    ap2 = net.addAccessPoint('ap2', ssid= 'iGrid-ap2', mode = 'g', channel = '1',
     model='DI524',position = '40,30,0', range = '20')
     sta1 = net.addStation('sta1', mac = '00:00:00:00:00:01', ip = '10.0.0.1/8',
     antennaHeight='1', antennaGain='5',position = '10,20,0',active_scan=1,scan_freq="2412 2437 2462")
@@ -33,7 +34,7 @@ def topology():
 
     #Takes 5 minutes before to proceed
     #time.sleep(40)
-    net.setPropagationModel(model="longDistance", exp=4)
+    net.setPropagationModel(model="logDistance", exp=4)
 
 
 
