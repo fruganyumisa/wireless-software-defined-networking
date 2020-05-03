@@ -1,8 +1,0 @@
-{
-   "OFPQueueStatsRequest": {
-      "flags": 0,
-      "port_no": 43981,
-      "queue_id": 4294967295,
-      "type": 5
-   }
-}

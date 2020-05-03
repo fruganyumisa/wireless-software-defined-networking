@@ -1,8 +1,0 @@
-{
-   "OFPBundleCtrlMsg": {
-      "bundle_id": 99999999, 
-      "flags": 1, 
-      "properties": [], 
-      "type": 1
-   }
-}
